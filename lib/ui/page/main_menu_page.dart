@@ -22,9 +22,15 @@ class _MainMenuPageBodyState extends State<MainMenuPageBody> {
   MainMenu.Provider _provider;
 
   @override
+  void initState() {
+    super.initState();
+    _provider = Provider.of<MainMenu.Provider>(context, listen: false);
+    _provider.onCreate();
+  }
+
+  @override
   Widget build(BuildContext context) {
     _provider = Provider.of<MainMenu.Provider>(context);
-    _provider.onCreate();
     return Scaffold(
       body: Container(
         child: Center(

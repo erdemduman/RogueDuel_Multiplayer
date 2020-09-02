@@ -19,6 +19,7 @@ class _ActionScenarioState extends State<ActionScenario> {
     return Scaffold(
       body: Container(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           healthView(),
           calculateView(),
@@ -57,14 +58,29 @@ class _ActionScenarioState extends State<ActionScenario> {
         children: [
           Text(
             "If you roll",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 25),
           ),
           NumberPicker.horizontal(
             initialValue: _provider.currentCalculateValue,
             minValue: 0,
             maxValue: 20,
-            listViewHeight: 50,
+            listViewHeight: 60,
             onChanged: (number) => _provider.changeCalculateValue(number),
+          ),
+          Text(
+            "the impact will be",
+            style: TextStyle(fontSize: 25),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "15",
+                style: TextStyle(fontSize: 30),
+              ),
+              Text("16", style: TextStyle(fontSize: 30))
+            ],
           )
         ],
       ),
@@ -75,7 +91,6 @@ class _ActionScenarioState extends State<ActionScenario> {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             height: 100,

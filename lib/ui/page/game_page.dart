@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/duel_view.dart';
+import 'package:project_rd/ui/view/gift_view.dart';
 import 'package:provider/provider.dart';
 import 'package:project_rd/logic/provider/game_provider.dart' as Game;
 
@@ -34,10 +35,20 @@ class GamePageBody extends StatefulWidget {
 
 class _GamePageBodyState extends State<GamePageBody> {
   Game.Provider _provider;
+
+  @override
+  void initState() {
+    super.initState();
+    _provider = Provider.of<Game.Provider>(context, listen: false);
+    _provider?.onCreate(widget.navigationData);
+  }
+
   @override
   Widget build(BuildContext context) {
     _provider = Provider.of<Game.Provider>(context);
-    _provider.onCreate(widget.navigationData);
-    return DuelView();
+    return PageView(
+      scrollDirection: Axis.vertical,
+      children: [DuelView(), GiftView()],
+    );
   }
 }

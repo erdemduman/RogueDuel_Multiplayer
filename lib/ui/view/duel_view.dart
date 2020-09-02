@@ -17,8 +17,20 @@ class _DuelViewState extends State<DuelView> {
   Widget build(BuildContext context) {
     _provider = Provider.of<Game.Provider>(context);
     return Container(
-        child: getScenario(_provider.scenario),
-        margin: EdgeInsets.fromLTRB(15, 40, 15, 20));
+        child: Column(
+          children: [
+            Expanded(child: getScenario(_provider?.scenario)),
+            Container(
+              height: 60,
+              width: double.infinity,
+              child: RaisedButton(
+                  onPressed: () {},
+                  color: Colors.black,
+                  child: Image.asset('assets/down_arrow.png')),
+            )
+          ],
+        ),
+        margin: EdgeInsets.fromLTRB(15, 40, 15, 10));
   }
 
   Widget getScenario(Game.Scenario scenario) {

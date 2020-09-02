@@ -23,6 +23,14 @@ class GiftPageBody extends StatefulWidget {
 
 class _GiftPageBodyState extends State<GiftPageBody> {
   Gift.Provider _provider;
+
+  @override
+  void initState() {
+    super.initState();
+    _provider = Provider.of<Gift.Provider>(context, listen: false);
+    _provider?.onCreate();
+  }
+
   @override
   Widget build(BuildContext context) {
     _provider = Provider.of<Gift.Provider>(context);
@@ -64,7 +72,7 @@ class _GiftPageBodyState extends State<GiftPageBody> {
 
   RaisedButton backButton() {
     return RaisedButton(
-        onPressed: _provider.goToBack,
+        onPressed: _provider?.goToBack,
         color: Colors.black,
         child: Text("Back",
             style: TextStyle(fontFamily: 'Minecraft', color: Colors.white)));
