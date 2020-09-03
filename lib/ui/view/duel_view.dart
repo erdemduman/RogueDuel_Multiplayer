@@ -20,17 +20,11 @@ class _DuelViewState extends State<DuelView> {
         child: Column(
           children: [
             Expanded(child: getScenario(_provider?.scenario)),
-            Container(
-              height: 60,
-              width: double.infinity,
-              child: RaisedButton(
-                  onPressed: () {},
-                  color: Colors.black,
-                  child: Image.asset('assets/down_arrow.png')),
-            )
+            SizedBox(height: 70),
+            downArrow()
           ],
         ),
-        margin: EdgeInsets.fromLTRB(15, 40, 15, 10));
+        margin: EdgeInsets.fromLTRB(15, 40, 15, 15));
   }
 
   Widget getScenario(Game.Scenario scenario) {
@@ -43,5 +37,21 @@ class _DuelViewState extends State<DuelView> {
         break;
       default:
     }
+  }
+
+  Container downArrow() {
+    return Container(
+      height: 50,
+      width: double.infinity,
+      child: RaisedButton(
+          onPressed: () {},
+          color: Colors.black,
+          child: Stack(children: [
+            Image.asset('assets/down_arrow.png'),
+            Align(
+                alignment: Alignment.topCenter,
+                child: Text("Gifts", style: TextStyle(color: Colors.grey[300])))
+          ])),
+    );
   }
 }

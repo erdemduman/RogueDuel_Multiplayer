@@ -46,9 +46,12 @@ class _GamePageBodyState extends State<GamePageBody> {
   @override
   Widget build(BuildContext context) {
     _provider = Provider.of<Game.Provider>(context);
-    return PageView(
-      scrollDirection: Axis.vertical,
-      children: [DuelView(), GiftView()],
+    return Scaffold(
+      body: PageView(
+        scrollDirection: Axis.vertical,
+        children: [DuelView(), GiftView()],
+      ),
+      backgroundColor: Colors.black,
     );
   }
 }
