@@ -50,6 +50,7 @@ flutter:
     - assets/pixel_attack.png
     - assets/pixel_defence.png
     - assets/down_arrow.png
+    - assets/dice.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

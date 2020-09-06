@@ -26,6 +26,7 @@ class _GamePageState extends State<GamePage> {
 
 class GamePageBody extends StatefulWidget {
   final navigationData;
+  List<Widget> pages = [];
 
   GamePageBody(this.navigationData);
 
@@ -35,23 +36,34 @@ class GamePageBody extends StatefulWidget {
 
 class _GamePageBodyState extends State<GamePageBody> {
   Game.Provider _provider;
+  PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     _provider = Provider.of<Game.Provider>(context, listen: false);
     _provider?.onCreate(widget.navigationData);
+    _pageController = PageController();
   }
 
   @override
   Widget build(BuildContext context) {
     _provider = Provider.of<Game.Provider>(context);
+    widget.pages.addAll([DuelView(_pageController), GiftView(_pageController)]);
     return Scaffold(
-      body: PageView(
+      body: PageView.builder(
+        controller: _pageController,
         scrollDirection: Axis.vertical,
-        children: [DuelView(), GiftView()],
+        itemBuilder: (context, index) => widget.pages[index % 2],
+        onPageChanged: (page) => _provider?.pageViewChanged(page),
       ),
       backgroundColor: Colors.black,
     );
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 }

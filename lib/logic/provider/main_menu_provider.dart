@@ -36,7 +36,9 @@ class Provider extends Base.Provider {
 
   void _goToSinglePlayer() {
     routeService.goToRoute(Routes.game,
-        arguments: Game.Parameter()..gameMode = Game.GameMode.Singleplayer);
+        arguments: Game.Parameter()
+          ..gameMode = Game.GameMode.Singleplayer
+          ..scenario = Game.Scenario.Action);
   }
 
   void _goToMultiplayer() {

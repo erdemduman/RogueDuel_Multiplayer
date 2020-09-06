@@ -60,12 +60,12 @@ class _GiftPageBodyState extends State<GiftPageBody> {
       width: double.infinity,
       height: 185,
       child: RaisedButton(
-          onPressed: () {},
+          onPressed: () => _provider?.goToActionScenario(),
           color: Colors.black,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0),
               side: BorderSide(color: Colors.white)),
-          child: Text("SeLaM :)",
+          child: Text("Gift Sample",
               style: TextStyle(fontFamily: 'Minecraft', color: Colors.white))),
     );
   }

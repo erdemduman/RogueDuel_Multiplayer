@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/view/action_scenario.dart';
-import 'package:project_rd/ui/view/story_scenario.dart';
+import 'package:project_rd/ui/view/scenario/action_scenario.dart';
+import 'package:project_rd/ui/view/scenario/dice_scenario.dart';
+import 'package:project_rd/ui/view/scenario/story_scenario.dart';
 import 'package:project_rd/logic/provider/game_provider.dart' as Game;
 import 'package:provider/provider.dart';
 
 class DuelView extends StatefulWidget {
+  final PageController _pageController;
+
+  DuelView(this._pageController);
+
   @override
   _DuelViewState createState() => _DuelViewState();
 }
@@ -35,6 +40,9 @@ class _DuelViewState extends State<DuelView> {
       case Game.Scenario.Story:
         return StoryScenario();
         break;
+      case Game.Scenario.Dice:
+        return DiceScenario();
+        break;
       default:
     }
   }
@@ -44,7 +52,12 @@ class _DuelViewState extends State<DuelView> {
       height: 50,
       width: double.infinity,
       child: RaisedButton(
-          onPressed: () {},
+          onPressed: () {
+            _provider?.pageViewChanged(_provider.pageNumber + 1);
+            widget._pageController.animateToPage(_provider?.pageNumber,
+                duration: const Duration(milliseconds: 600),
+                curve: Curves.easeInOut);
+          },
           color: Colors.black,
           child: Stack(children: [
             Image.asset('assets/down_arrow.png'),

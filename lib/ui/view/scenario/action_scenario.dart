@@ -22,7 +22,7 @@ class _ActionScenarioState extends State<ActionScenario> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           healthView(),
-          calculateView(),
+          Expanded(child: calculateView()),
           attackAndDefenceView(),
         ],
       )),
@@ -55,11 +55,14 @@ class _ActionScenarioState extends State<ActionScenario> {
   Container calculateView() {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: 30),
           Text(
             "If you roll",
             style: TextStyle(fontSize: 25),
           ),
+          SizedBox(height: 20),
           NumberPicker.horizontal(
             initialValue: _provider.currentCalculateValue,
             minValue: 0,
@@ -67,21 +70,41 @@ class _ActionScenarioState extends State<ActionScenario> {
             listViewHeight: 60,
             onChanged: (number) => _provider.changeCalculateValue(number),
           ),
+          SizedBox(height: 20),
           Text(
             "the impact will be",
             style: TextStyle(fontSize: 25),
           ),
+          SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "15",
-                style: TextStyle(fontSize: 30),
+              Row(
+                children: [
+                  Transform.rotate(
+                    angle: _pi / 4,
+                    child: Container(
+                      child: Image.asset('assets/pixel_attack.png'),
+                      height: 45,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Text("15", style: TextStyle(fontSize: 25)),
+                ],
               ),
-              Text("16", style: TextStyle(fontSize: 30))
+              Row(
+                children: [
+                  Text("16", style: TextStyle(fontSize: 25)),
+                  SizedBox(width: 5),
+                  Container(
+                      child: Image.asset('assets/pixel_defence.png'),
+                      height: 40)
+                ],
+              )
             ],
-          )
+          ),
+          SizedBox(height: 30)
         ],
       ),
     );
@@ -99,7 +122,8 @@ class _ActionScenarioState extends State<ActionScenario> {
               border: Border.all(color: Colors.white),
             ),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () =>
+                  _provider?.goToDiceScenario(Game.ActionType.Attack),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -123,7 +147,8 @@ class _ActionScenarioState extends State<ActionScenario> {
               border: Border.all(color: Colors.white),
             ),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () =>
+                  _provider?.goToDiceScenario(Game.ActionType.Defence),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
