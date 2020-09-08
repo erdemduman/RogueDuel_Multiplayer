@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/logic/provider/choose_gift_provider.dart'
     as ChooseGift;
+import 'package:project_rd/styles.dart';
 import 'package:provider/provider.dart';
 
 class ChooseGiftPage extends StatefulWidget {
@@ -71,9 +72,7 @@ class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
       child: RaisedButton(
           onPressed: () => _provider?.goToActionScenario(),
           color: Colors.black,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0.0),
-              side: BorderSide(color: Colors.white)),
+          shape: Styles.buttonStyle(),
           child: Container(
             child: Text("Gift Sample",
                 style: TextStyle(fontFamily: 'Minecraft', color: Colors.white)),

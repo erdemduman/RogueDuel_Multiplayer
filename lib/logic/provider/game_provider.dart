@@ -8,6 +8,8 @@ class Provider extends Base.Provider {
   int _currentCalculateValue;
   int _pageNumber;
   String _diceNumber;
+  bool _rollBackButtonEnabled;
+  bool _isButtonBack;
 
   @override
   void onCreate([Base.Parameter navigationData]) {
@@ -16,7 +18,8 @@ class Provider extends Base.Provider {
     _gameMode = parameter.gameMode;
     _currentCalculateValue = 10;
     _pageNumber = 0;
-    _diceNumber = "0";
+    _rollBackButtonEnabled = true;
+    _isButtonBack = true;
   }
 
   void goToGiftPage() {
@@ -41,6 +44,7 @@ class Provider extends Base.Provider {
   void goToDiceScenario(ActionType actionType) {
     _scenario = Scenario.Dice;
     _diceNumber = null;
+    _isButtonBack = true;
     notifyListeners();
   }
 
@@ -58,9 +62,21 @@ class Provider extends Base.Provider {
   int get currentCalculateValue => _currentCalculateValue;
   int get pageNumber => _pageNumber;
   String get diceNumber => _diceNumber;
+  bool get rollBackButtonEnabled => _rollBackButtonEnabled;
+  bool get isButtonBack => _isButtonBack;
 
   set diceNumber(String value) {
     _diceNumber = value;
+    notifyListeners();
+  }
+
+  set rollBackButtonEnabled(bool value) {
+    _rollBackButtonEnabled = value;
+    notifyListeners();
+  }
+
+  set isButtonBack(bool value) {
+    _isButtonBack = value;
     notifyListeners();
   }
 }

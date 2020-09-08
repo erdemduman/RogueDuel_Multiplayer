@@ -37,17 +37,13 @@ class MainMenuCard extends StatelessWidget {
             color: Colors.grey[400],
             size: 20,
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Text(
             _menuItem.name,
             style: TextStyle(
                 fontFamily: 'Minecraft', color: Colors.grey[400], fontSize: 20),
           ),
-          SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: 10),
           Icon(
             Icons.lock,
             color: Colors.grey[400],

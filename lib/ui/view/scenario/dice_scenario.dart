@@ -23,7 +23,7 @@ class _DiceScenarioState extends State<DiceScenario> {
       child: Column(
         children: [
           Expanded(child: HealthUnit(), flex: 12),
-          Expanded(child: DiceUnit(), flex: 40),
+          Expanded(child: DiceUnit(), flex: 25),
           Expanded(child: RollBackButtonUnit(), flex: 20)
         ],
       ),
