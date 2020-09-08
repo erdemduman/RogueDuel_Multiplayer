@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:project_rd/service/locator.dart';
 import 'package:project_rd/service/router_service.dart';
-import '../../locator.dart';
 
 class Provider extends ChangeNotifier {
   final RouteService routeService = locator<RouteService>();

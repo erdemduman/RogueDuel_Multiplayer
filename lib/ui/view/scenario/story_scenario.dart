@@ -17,10 +17,9 @@ class _StoryScenarioState extends State<StoryScenario> {
       body: Container(
         child: Column(
           children: [
-            healthView(),
-            SizedBox(height: 20),
-            Expanded(child: storyView()),
-            chooseGiftView()
+            Expanded(child: healthView(), flex: 13),
+            Expanded(child: storyView(), flex: 50),
+            Expanded(child: chooseGiftView(), flex: 13)
           ],
         ),
       ),
@@ -66,8 +65,7 @@ class _StoryScenarioState extends State<StoryScenario> {
             Text(
               "You will probably die in the next turn hahahaha you loser",
               textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 70)
+            )
           ]),
           style: TextStyle(fontSize: 18, fontFamily: 'Minecraft')),
     );

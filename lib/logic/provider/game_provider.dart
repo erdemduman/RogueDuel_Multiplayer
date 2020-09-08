@@ -21,7 +21,7 @@ class Provider extends Base.Provider {
   }
 
   void goToGiftPage() {
-    routeService.goToRoute(Routes.gift);
+    routeService.goToRoute(Routes.choose_gift);
   }
 
   void pageViewChanged(int page) {

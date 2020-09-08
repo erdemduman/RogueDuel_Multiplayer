@@ -19,9 +19,9 @@ class _DiceScenarioState extends State<DiceScenario> {
     return Container(
       child: Column(
         children: [
-          healthView(),
-          Expanded(child: diceView()),
-          rollAndBackButtonView()
+          Expanded(child: healthView(), flex: 12),
+          Expanded(child: diceView(), flex: 40),
+          Expanded(child: rollAndBackButtonView(), flex: 20)
         ],
       ),
     );
@@ -56,7 +56,7 @@ class _DiceScenarioState extends State<DiceScenario> {
         alignment: AlignmentDirectional.center,
         children: [
           Container(
-            child: Image.asset('assets/dice.png', height: 300),
+            child: Image.asset('assets/dice.png'),
           ),
           Text(
             _provider?.diceNumber != null ? _provider?.diceNumber : "",
@@ -70,6 +70,7 @@ class _DiceScenarioState extends State<DiceScenario> {
   Container rollAndBackButtonView() {
     return Container(
         child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RaisedButton(
             onPressed: () => rollDice(),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_rd/router.dart';
+import 'package:project_rd/service/locator.dart';
 import 'package:project_rd/service/router_service.dart';
-
 import 'constants/routes.dart';
-import 'locator.dart';
 
 void main() {
   setupLocator();

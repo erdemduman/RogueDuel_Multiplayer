@@ -24,9 +24,8 @@ class _DuelViewState extends State<DuelView> {
     return Container(
         child: Column(
           children: [
-            Expanded(child: getScenario(_provider?.scenario)),
-            SizedBox(height: 70),
-            downArrow()
+            Expanded(child: getScenario(_provider?.scenario), flex: 15),
+            Expanded(child: downArrow(), flex: 1)
           ],
         ),
         margin: EdgeInsets.fromLTRB(15, 40, 15, 15));

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:project_rd/logic/provider/game_provider.dart' as Game;
 import 'package:provider/provider.dart';
+import 'package:project_rd/ui/utils.dart';
 
 class ActionScenario extends StatefulWidget {
   @override
@@ -21,9 +22,9 @@ class _ActionScenarioState extends State<ActionScenario> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          healthView(),
-          Expanded(child: calculateView()),
-          attackAndDefenceView(),
+          Expanded(child: healthView(), flex: 1),
+          Expanded(child: calculateView(), flex: 3),
+          Expanded(child: attackAndDefenceView(), flex: 2),
         ],
       )),
       backgroundColor: Colors.black,
@@ -57,54 +58,70 @@ class _ActionScenarioState extends State<ActionScenario> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 30),
-          Text(
-            "If you roll",
-            style: TextStyle(fontSize: 25),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "If you roll",
+                style: TextStyle(fontSize: 25),
+              ),
+            ),
+            flex: 1,
           ),
-          SizedBox(height: 20),
-          NumberPicker.horizontal(
-            initialValue: _provider.currentCalculateValue,
-            minValue: 0,
-            maxValue: 20,
-            listViewHeight: 60,
-            onChanged: (number) => _provider.changeCalculateValue(number),
+          Expanded(
+            child: Container(
+              child: NumberPicker.horizontal(
+                initialValue: _provider.currentCalculateValue,
+                minValue: 0,
+                maxValue: 20,
+                onChanged: (number) => _provider.changeCalculateValue(number),
+              ),
+            ),
+            flex: 1,
           ),
-          SizedBox(height: 20),
-          Text(
-            "the impact will be",
-            style: TextStyle(fontSize: 25),
+          Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "the impact will be",
+                style: TextStyle(fontSize: 25),
+              ),
+            ),
+            flex: 1,
           ),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
+          Expanded(
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Transform.rotate(
-                    angle: _pi / 4,
-                    child: Container(
-                      child: Image.asset('assets/pixel_attack.png'),
-                      height: 45,
-                    ),
+                  Row(
+                    children: [
+                      Transform.rotate(
+                        angle: _pi / 4,
+                        child: Container(
+                          child: Image.asset('assets/pixel_attack.png'),
+                          height: 45,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text("15", style: TextStyle(fontSize: 25)),
+                    ],
                   ),
-                  SizedBox(width: 10),
-                  Text("15", style: TextStyle(fontSize: 25)),
+                  Row(
+                    children: [
+                      Text("16", style: TextStyle(fontSize: 25)),
+                      SizedBox(width: 5),
+                      Container(
+                          child: Image.asset('assets/pixel_defence.png'),
+                          height: 40)
+                    ],
+                  )
                 ],
               ),
-              Row(
-                children: [
-                  Text("16", style: TextStyle(fontSize: 25)),
-                  SizedBox(width: 5),
-                  Container(
-                      child: Image.asset('assets/pixel_defence.png'),
-                      height: 40)
-                ],
-              )
-            ],
-          ),
-          SizedBox(height: 30)
+            ),
+            flex: 1,
+          )
         ],
       ),
     );
