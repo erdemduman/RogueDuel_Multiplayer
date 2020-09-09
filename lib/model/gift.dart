@@ -5,13 +5,15 @@ class Gift {
   int id;
   String name;
   String definition;
-  Function(Player, Player) effect;
+  EffectType effectType;
+  Function(Player) effect;
   int rarity;
 
   Gift(
       {@required this.id,
       @required this.name,
       @required this.definition,
+      @required this.effectType,
       @required this.effect,
       @required this.rarity});
 }
@@ -24,14 +26,15 @@ class Invocation extends Gift {
       {@required int id,
       @required String name,
       @required String definition,
-      @required Function(Player, Player) effect,
+      @required EffectType effectType,
+      @required Function(Player) effect,
       @required int rarity,
-      @required this.priority,
       @required this.howManyLeft})
       : super(
             id: id,
             name: name,
             definition: definition,
+            effectType: effectType,
             effect: effect,
             rarity: rarity);
 }
@@ -44,13 +47,15 @@ class Conjuration extends Gift {
       {@required int id,
       @required String name,
       @required String definition,
-      @required Function(Player, Player) effect,
+      @required EffectType effectType,
+      @required Function(Player) effect,
       @required int rarity,
       this.message})
       : super(
             id: id,
             name: name,
             definition: definition,
+            effectType: effectType,
             effect: effect,
             rarity: rarity);
 }
@@ -60,3 +65,5 @@ class Status {
   String name;
   int turnNumber;
 }
+
+enum EffectType { Self, Opponent }
