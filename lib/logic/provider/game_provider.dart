@@ -1,8 +1,12 @@
 import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
+import 'package:project_rd/model/player.dart';
 import 'base_provider.dart' as Base;
 
 class Provider extends Base.Provider {
+  Player _me;
+  Player _opponent;
+
   GameMode _gameMode;
   Scenario _scenario;
   int _currentCalculateValue;
@@ -58,6 +62,8 @@ class Provider extends Base.Provider {
     notifyListeners();
   }
 
+  Player get me => _me;
+  Player get opponent => _opponent;
   Scenario get scenario => _scenario;
   int get currentCalculateValue => _currentCalculateValue;
   int get pageNumber => _pageNumber;
