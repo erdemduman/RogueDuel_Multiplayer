@@ -10,7 +10,7 @@ List<Gift> gifts = [
       effect: (player) => player.impact.attack +=
           (player.dice.diceValue / 10).round() + player.dice.diceValue,
       rarity: 5,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Invocation(
       id: 2,
       name: "Rogue's Heart",
@@ -18,7 +18,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) => player.hp += 10,
       rarity: 3,
-      howManyLeft: 1),
+      remainingProp: 1),
   Invocation(
       id: 3,
       name: "Rogue's Heart+",
@@ -26,7 +26,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) => player.hp += 20,
       rarity: 2,
-      howManyLeft: 1),
+      remainingProp: 1),
   Invocation(
       id: 4,
       name: "Rogue's Heart++",
@@ -34,7 +34,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) => player.hp += 30,
       rarity: 1,
-      howManyLeft: 1),
+      remainingProp: 1),
   Invocation(
       id: 5,
       name: "All In",
@@ -48,7 +48,7 @@ List<Gift> gifts = [
         }
       },
       rarity: 5,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Invocation(
       id: 6,
       name: "Thick as a Brick",
@@ -57,7 +57,7 @@ List<Gift> gifts = [
       effect: (player) => player.impact.defence +=
           (player.dice.diceValue / 10).round() + player.dice.diceValue,
       rarity: 5,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Conjuration(
       id: 7,
       name: "Master Gambler",
@@ -73,7 +73,7 @@ List<Gift> gifts = [
       effect: (player) => player.impact.attack +=
           (player.dice.diceValue / 4).round() + player.dice.diceValue,
       rarity: 3,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Invocation(
       id: 9,
       name: "Thick as a Brick+",
@@ -82,7 +82,7 @@ List<Gift> gifts = [
       effect: (player) => player.impact.defence +=
           (player.dice.diceValue / 4).round() + player.dice.diceValue,
       rarity: 3,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Invocation(
       id: 10,
       name: "Guaranteed Hands",
@@ -92,13 +92,13 @@ List<Gift> gifts = [
         if (player.dice.diceValue < 5) player.dice.diceValue = 5;
       },
       rarity: 3,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Conjuration(
     id: 11,
     name: "Falsifier",
     definition: "Dodge the enemy attack next turn.",
     effectType: EffectType.Opponent,
-    effect: (player) {/*TODO implement here*/},
+    effect: (player) => player.impact.attack = 0,
     rarity: 3,
   ),
   Conjuration(
@@ -106,7 +106,7 @@ List<Gift> gifts = [
     name: "Zero Tolerance",
     definition: "Ignore the enemy defence next turn.",
     effectType: EffectType.Opponent,
-    effect: (player) {/*TODO implement here*/},
+    effect: (player) => player.impact.defence = 0,
     rarity: 3,
   ),
   Invocation(
@@ -117,7 +117,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) {/*TODO implement here*/},
       rarity: 2,
-      howManyLeft: 5),
+      remainingProp: 5),
   Invocation(
       id: 14,
       name: "Blacksmith's Dream",
@@ -126,7 +126,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) {/*TODO implement here*/},
       rarity: 1,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Conjuration(
     id: 15,
     name: "Forge",
@@ -143,7 +143,7 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) {/*TODO implement here*/},
       rarity: 3,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
   Invocation(
       id: 17,
       name: "Steel Body",
@@ -151,5 +151,23 @@ List<Gift> gifts = [
       effectType: EffectType.Self,
       effect: (player) {/*TODO implement here*/},
       rarity: 3,
-      howManyLeft: double.infinity),
+      remainingProp: double.infinity),
+  Invocation(
+      id: 18,
+      name: "Sorceress",
+      definition:
+          "At the starting of the next turn, heal your HP by 5 for every conjuration gift you used in the previous turn.",
+      effectType: EffectType.Self,
+      effect: (player) => player.hp += player.castedConjurations * 5,
+      rarity: 5,
+      remainingProp: double.infinity),
+  Invocation(
+      id: 19,
+      name: "Black Art",
+      definition:
+          "Conjuration effects are doubled, but lose 5 HP whenever you use one.",
+      effectType: EffectType.Self,
+      effect: (player) {/*TODO implement here*/},
+      rarity: 5,
+      remainingProp: double.infinity),
 ];

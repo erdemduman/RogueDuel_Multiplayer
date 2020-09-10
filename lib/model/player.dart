@@ -6,6 +6,7 @@ class Player {
   List<Gift> giftList;
   Impact impact;
   Dice dice;
+  int castedConjurations;
 }
 
 class Impact {

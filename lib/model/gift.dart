@@ -1,13 +1,17 @@
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/model/player.dart';
 
-class Gift {
+abstract class Gift {
   int id;
   String name;
   String definition;
   EffectType effectType;
   Function(Player) effect;
   int rarity;
+
+  num get remaining;
+  bool get active;
+  String get message;
 
   Gift(
       {@required this.id,
@@ -19,8 +23,7 @@ class Gift {
 }
 
 class Invocation extends Gift {
-  num priority;
-  num howManyLeft;
+  num remainingProp;
 
   Invocation(
       {@required int id,
@@ -29,7 +32,7 @@ class Invocation extends Gift {
       @required EffectType effectType,
       @required Function(Player) effect,
       @required int rarity,
-      @required this.howManyLeft})
+      @required this.remainingProp})
       : super(
             id: id,
             name: name,
@@ -37,11 +40,20 @@ class Invocation extends Gift {
             effectType: effectType,
             effect: effect,
             rarity: rarity);
+
+  @override
+  num get remaining => remaining;
+
+  @override
+  bool get active => throw UnimplementedError();
+
+  @override
+  String get message => throw UnimplementedError();
 }
 
 class Conjuration extends Gift {
-  bool active = false;
-  String message;
+  bool activeProp = false;
+  String messageProp;
 
   Conjuration(
       {@required int id,
@@ -50,7 +62,7 @@ class Conjuration extends Gift {
       @required EffectType effectType,
       @required Function(Player) effect,
       @required int rarity,
-      this.message})
+      this.messageProp})
       : super(
             id: id,
             name: name,
@@ -58,6 +70,15 @@ class Conjuration extends Gift {
             effectType: effectType,
             effect: effect,
             rarity: rarity);
+
+  @override
+  num get remaining => throw UnimplementedError();
+
+  @override
+  bool get active => activeProp;
+
+  @override
+  String get message => messageProp;
 }
 
 class Status {
