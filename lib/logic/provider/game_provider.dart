@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
+import 'package:project_rd/logic/use_case/process_gifts_use_case.dart'
+    as ProcessGift;
 import 'package:project_rd/model/player.dart';
 import 'base_provider.dart' as Base;
 
@@ -14,6 +16,11 @@ class Provider extends Base.Provider {
   String _diceNumber;
   bool _rollBackButtonEnabled;
   bool _isButtonBack;
+  ProcessGift.UseCase _processGiftUseCase;
+
+  Provider() {
+    _processGiftUseCase = ProcessGift.UseCase();
+  }
 
   @override
   void onCreate([Base.Parameter navigationData]) {
@@ -24,10 +31,12 @@ class Provider extends Base.Provider {
     _pageNumber = 0;
     _rollBackButtonEnabled = true;
     _isButtonBack = true;
+    createPlayers();
   }
 
-  void goToGiftPage() {
-    routeService.goToRoute(Routes.choose_gift);
+  void createPlayers() {
+    _me = Player(name: "Rogue", hp: 100);
+    _opponent = Player(name: "Monster", hp: 100);
   }
 
   void pageViewChanged(int page) {
@@ -35,13 +44,13 @@ class Provider extends Base.Provider {
     notifyListeners();
   }
 
-  void goToStoryScenario() {
-    _scenario = Scenario.Story;
+  void changeCalculateValue(int number) {
+    _currentCalculateValue = number;
     notifyListeners();
   }
 
-  void changeCalculateValue(int number) {
-    _currentCalculateValue = number;
+  void goToStoryScenario() {
+    _scenario = Scenario.Story;
     notifyListeners();
   }
 
@@ -57,10 +66,16 @@ class Provider extends Base.Provider {
     notifyListeners();
   }
 
+  void goToGiftPage() {
+    routeService.goToRoute(Routes.choose_gift);
+  }
+
   void rollDice() {
     _diceNumber = Random().nextInt(21).toString();
     notifyListeners();
   }
+
+  void processGifts() {}
 
   Player get me => _me;
   Player get opponent => _opponent;
