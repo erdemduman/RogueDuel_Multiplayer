@@ -7,7 +7,7 @@ List<Gift> gifts = [
       name: "Sword of Fellows",
       definition: "Increase your attack with 10%.",
       effectType: EffectType.Self,
-      effect: (player) => player.impact.attack +=
+      effect: (player, _) => player.impact.attack +=
           (player.dice.diceValue / 10).round() + player.dice.diceValue,
       rarity: 5,
       remainingProp: double.infinity),
@@ -16,7 +16,7 @@ List<Gift> gifts = [
       name: "Rogue's Heart",
       definition: "Increase your max HP by 10.",
       effectType: EffectType.Self,
-      effect: (player) => player.hp += 10,
+      effect: (player, _) => player.hp += 10,
       rarity: 3,
       remainingProp: 1),
   Invocation(
@@ -24,7 +24,7 @@ List<Gift> gifts = [
       name: "Rogue's Heart+",
       definition: "Increase your max HP by 20.",
       effectType: EffectType.Self,
-      effect: (player) => player.hp += 20,
+      effect: (player, _) => player.hp += 20,
       rarity: 2,
       remainingProp: 1),
   Invocation(
@@ -32,7 +32,7 @@ List<Gift> gifts = [
       name: "Rogue's Heart++",
       definition: "Increase your max HP by 30.",
       effectType: EffectType.Self,
-      effect: (player) => player.hp += 30,
+      effect: (player, _) => player.hp += 30,
       rarity: 1,
       remainingProp: 1),
   Invocation(
@@ -40,7 +40,7 @@ List<Gift> gifts = [
       name: "All In",
       definition: "Double your attack, halve your defence.",
       effectType: EffectType.Self,
-      effect: (player) {
+      effect: (player, _) {
         if (player.dice.diceType == DiceType.Attack) {
           player.dice.diceValue *= 2;
         } else if (player.dice.diceType == DiceType.Defence) {
@@ -54,41 +54,41 @@ List<Gift> gifts = [
       name: "Thick as a Brick",
       definition: "Increase your defence with 10%.",
       effectType: EffectType.Self,
-      effect: (player) => player.impact.defence +=
+      effect: (player, _) => player.impact.defence +=
           (player.dice.diceValue / 10).round() + player.dice.diceValue,
       rarity: 5,
       remainingProp: double.infinity),
   Conjuration(
       id: 7,
       name: "Master Gambler",
-      definition: "Gain one more rolling chance.",
+      definition: "Gain one more rolling chance next turn.",
       effectType: EffectType.Self,
-      effect: (player) => player.dice.diceRemaining += 1,
+      effect: (player, _) => player.dice.diceRemaining += 1,
       rarity: 5),
   Invocation(
       id: 8,
       name: "Sword of Fellows+",
       definition: "Increase your attack with 25%.",
       effectType: EffectType.Self,
-      effect: (player) => player.impact.attack +=
+      effect: (player, _) => player.impact.attack +=
           (player.dice.diceValue / 4).round() + player.dice.diceValue,
       rarity: 3,
       remainingProp: double.infinity),
   Invocation(
       id: 9,
       name: "Thick as a Brick+",
-      definition: "Increase your defence with 25%.",
       effectType: EffectType.Self,
-      effect: (player) => player.impact.defence +=
+      definition: "Increase your defence with 25%.",
+      effect: (player, _) => player.impact.defence +=
           (player.dice.diceValue / 4).round() + player.dice.diceValue,
       rarity: 3,
       remainingProp: double.infinity),
   Invocation(
       id: 10,
       name: "Guaranteed Hands",
-      definition: "If the rolled dice is less than 5, equalize it to 5.",
+      definition: "If you attack is less than 5, equalize it to 5.",
       effectType: EffectType.Self,
-      effect: (player) {
+      effect: (player, _) {
         if (player.dice.diceValue < 5) player.dice.diceValue = 5;
       },
       rarity: 3,
@@ -96,17 +96,17 @@ List<Gift> gifts = [
   Conjuration(
     id: 11,
     name: "Falsifier",
-    definition: "Dodge the enemy attack next turn.",
+    definition: "Set the enemy attack to zero.",
     effectType: EffectType.Opponent,
-    effect: (player) => player.impact.attack = 0,
+    effect: (_, player) => player.impact.attack = 0,
     rarity: 3,
   ),
   Conjuration(
     id: 12,
     name: "Zero Tolerance",
-    definition: "Ignore the enemy defence next turn.",
+    definition: "Set the enemy defence to zero.",
     effectType: EffectType.Opponent,
-    effect: (player) => player.impact.defence = 0,
+    effect: (player, _) => player.impact.defence = 0,
     rarity: 3,
   ),
   Invocation(
@@ -114,17 +114,17 @@ List<Gift> gifts = [
       name: "A Better Life",
       definition:
           "Apply regeneration for 5 turns.\n\nRegeneration: Heals your HP with N. --> N = Number of the remaining turns for this gift.",
-      effectType: EffectType.Self,
-      effect: (player) {/*TODO implement here*/},
+      effectType: EffectType.Opponent,
+      effect: (player, _) {/*TODO implement here*/},
       rarity: 2,
       remainingProp: 5),
   Invocation(
       id: 14,
       name: "Blacksmith's Dream",
       definition:
-          "Never get your sword broken again.\n\nBroken Sword: Your sword is broken if your attack is less than opponent's defence. As the effect, your damage is reduced by half for one turn.",
-      effectType: EffectType.Self,
-      effect: (player) {/*TODO implement here*/},
+          "Fix your broken sword.\n\nBroken Sword: Your sword is broken if your attack is less than opponent's defence. As the effect, your damage is reduced by half for one turn.",
+      effectType: EffectType.Opponent,
+      effect: (player, _) {/*TODO implement here*/},
       rarity: 1,
       remainingProp: double.infinity),
   Conjuration(
@@ -132,8 +132,8 @@ List<Gift> gifts = [
     name: "Forge",
     definition:
         "Avoid breaking your sword next turn.\n\nBroken Sword: Your sword is broken if your attack is less than opponent's defence. As the effect, your damage is reduced by half for one turn.",
-    effectType: EffectType.Opponent,
-    effect: (player) {/*TODO implement here*/},
+    effectType: EffectType.Self,
+    effect: (player, _) {/*TODO implement here*/},
     rarity: 5,
   ),
   Invocation(
@@ -141,16 +141,16 @@ List<Gift> gifts = [
       name: "Warrior Instinct",
       definition: "Increase your attack by 1.",
       effectType: EffectType.Self,
-      effect: (player) {/*TODO implement here*/},
-      rarity: 3,
+      effect: (player, _) {/*TODO implement here*/},
+      rarity: 4,
       remainingProp: double.infinity),
   Invocation(
       id: 17,
       name: "Steel Body",
       definition: "Increase your defence by 1.",
       effectType: EffectType.Self,
-      effect: (player) {/*TODO implement here*/},
-      rarity: 3,
+      effect: (player, _) {/*TODO implement here*/},
+      rarity: 4,
       remainingProp: double.infinity),
   Invocation(
       id: 18,
@@ -158,8 +158,8 @@ List<Gift> gifts = [
       definition:
           "At the starting of the next turn, heal your HP by 5 for every conjuration gift you used in the previous turn.",
       effectType: EffectType.Self,
-      effect: (player) => player.hp += player.castedConjurations * 5,
-      rarity: 5,
+      effect: (player, _) => player.hp += player.castedConjurations * 5,
+      rarity: 1,
       remainingProp: double.infinity),
   Invocation(
       id: 19,
@@ -167,7 +167,7 @@ List<Gift> gifts = [
       definition:
           "Conjuration effects are doubled, but lose 5 HP whenever you use one.",
       effectType: EffectType.Self,
-      effect: (player) {/*TODO implement here*/},
-      rarity: 5,
+      effect: (player, _) {/*TODO implement here*/},
+      rarity: 2,
       remainingProp: double.infinity),
 ];

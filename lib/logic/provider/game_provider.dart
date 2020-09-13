@@ -1,25 +1,28 @@
 import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
-import 'package:project_rd/logic/use_case/process_gifts_use_case.dart'
-    as ProcessGift;
+import 'package:project_rd/logic/use_case/calculate_use_case.dart' as Calculate;
 import 'package:project_rd/model/player.dart';
 import 'base_provider.dart' as Base;
 
-class Provider extends Base.Provider {
+class Provider extends Base.Provider implements Calculate.Callback {
   Player _me;
   Player _opponent;
 
   GameMode _gameMode;
   Scenario _scenario;
-  int _currentCalculateValue;
+  String _currentCalculateString;
   int _pageNumber;
-  String _diceNumber;
+  String _diceString;
   bool _rollBackButtonEnabled;
   bool _isButtonBack;
-  ProcessGift.UseCase _processGiftUseCase;
+  Calculate.UseCase _calculateUseCase;
+  Map<ActionType, DiceType> _diceTypeMapper = {
+    ActionType.Attack: DiceType.Attack,
+    ActionType.Defence: DiceType.Defence
+  };
 
   Provider() {
-    _processGiftUseCase = ProcessGift.UseCase();
+    _calculateUseCase = Calculate.UseCase();
   }
 
   @override
@@ -27,7 +30,7 @@ class Provider extends Base.Provider {
     var parameter = navigationData as Parameter;
     _scenario = parameter.scenario;
     _gameMode = parameter.gameMode;
-    _currentCalculateValue = 10;
+    _currentCalculateString = 10.toString();
     _pageNumber = 0;
     _rollBackButtonEnabled = true;
     _isButtonBack = true;
@@ -44,8 +47,15 @@ class Provider extends Base.Provider {
     notifyListeners();
   }
 
-  void changeCalculateValue(int number) {
-    _currentCalculateValue = number;
+  void changeCalculateValue(int number) async {
+    _currentCalculateString = number.toString();
+    await _calculateUseCase.executeAsync(
+        Calculate.Parameter()
+          ..me = _me
+          ..opponent = _opponent
+          ..diceString = _currentCalculateString
+          ..isCalculate = true,
+        this);
     notifyListeners();
   }
 
@@ -56,7 +66,7 @@ class Provider extends Base.Provider {
 
   void goToDiceScenario(ActionType actionType) {
     _scenario = Scenario.Dice;
-    _diceNumber = null;
+    _diceString = null;
     _isButtonBack = true;
     notifyListeners();
   }
@@ -71,23 +81,26 @@ class Provider extends Base.Provider {
   }
 
   void rollDice() {
-    _diceNumber = Random().nextInt(21).toString();
+    _diceString = Random().nextInt(21).toString();
     notifyListeners();
   }
 
   void processGifts() {}
 
+  @override
+  void onDone() {}
+
   Player get me => _me;
   Player get opponent => _opponent;
   Scenario get scenario => _scenario;
-  int get currentCalculateValue => _currentCalculateValue;
+  int get currentCalculateValue => int.parse(_currentCalculateString);
   int get pageNumber => _pageNumber;
-  String get diceNumber => _diceNumber;
+  String get diceString => _diceString;
   bool get rollBackButtonEnabled => _rollBackButtonEnabled;
   bool get isButtonBack => _isButtonBack;
 
-  set diceNumber(String value) {
-    _diceNumber = value;
+  set diceString(String value) {
+    _diceString = value;
     notifyListeners();
   }
 

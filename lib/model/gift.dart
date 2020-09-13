@@ -6,7 +6,7 @@ abstract class Gift {
   String name;
   String definition;
   EffectType effectType;
-  Function(Player) effect;
+  Function(Player, Player) effect;
   int rarity;
 
   num get remaining;
@@ -30,7 +30,7 @@ class Invocation extends Gift {
       @required String name,
       @required String definition,
       @required EffectType effectType,
-      @required Function(Player) effect,
+      @required Function(Player, Player) effect,
       @required int rarity,
       @required this.remainingProp})
       : super(
@@ -60,7 +60,7 @@ class Conjuration extends Gift {
       @required String name,
       @required String definition,
       @required EffectType effectType,
-      @required Function(Player) effect,
+      @required Function(Player, Player) effect,
       @required int rarity,
       this.messageProp})
       : super(
