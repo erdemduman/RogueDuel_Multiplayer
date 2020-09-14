@@ -22,7 +22,7 @@ class _DiceUnitState extends State<DiceUnit> {
             child: Image.asset('assets/dice.png'),
           ),
           Text(
-            _provider?.diceNumber != null ? _provider?.diceNumber : "",
+            _provider?.diceString != null ? _provider?.diceString : "",
             style: TextStyle(fontSize: 40),
           )
         ],

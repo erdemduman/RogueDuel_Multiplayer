@@ -57,14 +57,14 @@ class _RollBackButtonUnitState extends State<RollBackButtonUnit> {
 
   void rollDice() {
     _provider?.rollBackButtonEnabled = false;
-    _provider?.diceNumber = ".";
-    Future.delayed(Duration(seconds: 1), () => _provider?.diceNumber = "..");
-    Future.delayed(Duration(seconds: 2), () => _provider?.diceNumber = "...");
+    _provider?.diceString = ".";
+    Future.delayed(Duration(seconds: 1), () => _provider?.diceString = "..");
+    Future.delayed(Duration(seconds: 2), () => _provider?.diceString = "...");
     Future.delayed(
         Duration(seconds: 3),
         () => {
               _provider?.rollDice(),
-              _provider?.diceNumber = _provider.diceNumber
+              _provider?.diceString = _provider.diceString
             });
     Future.delayed(Duration(seconds: 3), () {
       _provider?.rollBackButtonEnabled = true;
