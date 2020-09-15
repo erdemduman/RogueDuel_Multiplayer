@@ -42,7 +42,9 @@ class _GiftViewState extends State<GiftView> {
           },
           color: Colors.black,
           child: Stack(children: [
-            Image.asset('assets/down_arrow.png'),
+            Align(
+                alignment: Alignment.topCenter,
+                child: Image.asset('assets/down_arrow.png')),
             Align(
                 alignment: Alignment.topCenter,
                 child: Text("Duel", style: TextStyle(color: Colors.grey[300])))

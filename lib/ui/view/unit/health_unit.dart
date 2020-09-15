@@ -16,9 +16,9 @@ class _HealthUnitState extends State<HealthUnit> {
     return Container(
       child: Column(children: [
         Row(children: [
-          Text("Player 1", style: TextStyle(fontSize: 25)),
+          Text("Rogue", style: TextStyle(fontSize: 25)),
           Spacer(),
-          Text("Player 2", style: TextStyle(fontSize: 25)),
+          Text("Opponent", style: TextStyle(fontSize: 25)),
         ]),
         SizedBox(height: 10),
         Row(children: [
