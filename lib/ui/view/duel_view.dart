@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/scenario/action_scenario.dart';
 import 'package:project_rd/ui/view/scenario/dice_scenario.dart';
 import 'package:project_rd/ui/view/scenario/story_scenario.dart';
-import 'package:project_rd/logic/provider/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
 import 'package:provider/provider.dart';
 
 class DuelView extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:project_rd/constants/routes.dart';
-import 'package:project_rd/logic/provider/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
 
 import 'base_provider.dart' as Base;
 

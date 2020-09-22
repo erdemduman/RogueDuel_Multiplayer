@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/logic/provider/choose_gift_provider.dart'
+import 'package:project_rd/ui/viewmodel/choose_gift_provider.dart'
     as ChooseGift;
 import 'package:project_rd/styles.dart';
 import 'package:provider/provider.dart';

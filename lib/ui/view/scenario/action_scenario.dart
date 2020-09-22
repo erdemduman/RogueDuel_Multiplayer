@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/logic/provider/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
 import 'package:project_rd/ui/view/unit/attack_defence_unit.dart';
 import 'package:project_rd/ui/view/unit/calculate_unit.dart';
 import 'package:project_rd/ui/view/unit/health_unit.dart';

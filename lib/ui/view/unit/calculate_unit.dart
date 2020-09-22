@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:project_rd/logic/provider/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
 import 'package:provider/provider.dart';
 
 class CalculateUnit extends StatefulWidget {

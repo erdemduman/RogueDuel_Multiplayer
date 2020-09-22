@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/main_menu_card.dart';
 import 'package:provider/provider.dart';
-import 'package:project_rd/logic/provider/main_menu_provider.dart' as MainMenu;
+import 'package:project_rd/ui/viewmodel/main_menu_provider.dart' as MainMenu;
 
 class MainMenuPage extends StatelessWidget {
   @override
