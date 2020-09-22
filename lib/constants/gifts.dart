@@ -1,5 +1,5 @@
-import 'package:project_rd/model/gift.dart';
-import 'package:project_rd/model/player.dart';
+import 'package:project_rd/data/gift.dart';
+import 'package:project_rd/data/player.dart';
 
 List<Gift> gifts = [
   Invocation(

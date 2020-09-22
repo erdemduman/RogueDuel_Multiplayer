@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/model/gift.dart';
+import 'package:project_rd/data/gift.dart';
 
 class Player {
   String name;

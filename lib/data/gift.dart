@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/model/player.dart';
+import 'package:project_rd/data/player.dart';
 
 abstract class Gift {
   int id;

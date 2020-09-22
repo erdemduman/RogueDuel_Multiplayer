@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
 import 'package:project_rd/logic/use_case/calculate_use_case.dart' as Calculate;
-import 'package:project_rd/model/player.dart';
+import 'package:project_rd/data/player.dart';
 import 'base_viewmodel.dart' as Base;
 
 class ViewModel extends Base.ViewModel implements Calculate.Callback {
