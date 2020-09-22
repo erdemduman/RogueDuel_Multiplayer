@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 import 'package:project_rd/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -10,11 +10,11 @@ class RollBackButtonUnit extends StatefulWidget {
 }
 
 class _RollBackButtonUnitState extends State<RollBackButtonUnit> {
-  Game.Provider _provider;
+  Game.ViewModel _provider;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.Provider>(context);
+    _provider = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,

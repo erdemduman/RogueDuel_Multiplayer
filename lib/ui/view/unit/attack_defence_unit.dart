@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 
 class AttackDefenceUnit extends StatelessWidget {
   final Function(Game.ActionType) onAction;

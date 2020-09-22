@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/duel_view.dart';
 import 'package:project_rd/ui/view/gift_view.dart';
 import 'package:provider/provider.dart';
-import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 
 class GamePage extends StatefulWidget {
   final navigationData;
@@ -18,7 +18,7 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => Game.Provider(),
+      create: (context) => Game.ViewModel(),
       child: GamePageBody(widget.navigationData),
     );
   }
@@ -35,20 +35,20 @@ class GamePageBody extends StatefulWidget {
 }
 
 class _GamePageBodyState extends State<GamePageBody> {
-  Game.Provider _provider;
+  Game.ViewModel _provider;
   PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<Game.Provider>(context, listen: false);
+    _provider = Provider.of<Game.ViewModel>(context, listen: false);
     _provider?.onCreate(widget.navigationData);
     _pageController = PageController();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.Provider>(context);
+    _provider = Provider.of<Game.ViewModel>(context);
     widget.pages.addAll([DuelView(_pageController), GiftView(_pageController)]);
     return Scaffold(
       body: PageView.builder(

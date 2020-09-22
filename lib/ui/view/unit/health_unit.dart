@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 import 'package:provider/provider.dart';
 
 class HealthUnit extends StatefulWidget {
@@ -8,11 +8,11 @@ class HealthUnit extends StatefulWidget {
 }
 
 class _HealthUnitState extends State<HealthUnit> {
-  Game.Provider _provider;
+  Game.ViewModel _provider;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.Provider>(context);
+    _provider = Provider.of<Game.ViewModel>(context);
     return Container(
       child: Column(children: [
         Row(children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/viewmodel/game_provider.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 import 'package:provider/provider.dart';
 
 class DiceUnit extends StatefulWidget {
@@ -8,11 +8,11 @@ class DiceUnit extends StatefulWidget {
 }
 
 class _DiceUnitState extends State<DiceUnit> {
-  Game.Provider _provider;
+  Game.ViewModel _provider;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.Provider>(context);
+    _provider = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Center(
       child: Stack(
