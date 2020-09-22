@@ -25,18 +25,18 @@ class ChooseGiftPageBody extends StatefulWidget {
 }
 
 class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
-  ChooseGift.ViewModel _provider;
+  ChooseGift.ViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<ChooseGift.ViewModel>(context, listen: false);
-    _provider?.onCreate();
+    _viewModel = Provider.of<ChooseGift.ViewModel>(context, listen: false);
+    _viewModel?.onCreate();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<ChooseGift.ViewModel>(context);
+    _viewModel = Provider.of<ChooseGift.ViewModel>(context);
     return Scaffold(
       body: Center(
         child: Container(
@@ -70,7 +70,7 @@ class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
     return Container(
       width: double.infinity,
       child: RaisedButton(
-          onPressed: () => _provider?.goToActionScenario(),
+          onPressed: () => _viewModel?.goToActionScenario(),
           color: Colors.black,
           shape: Styles.buttonStyle(),
           child: Container(
@@ -82,7 +82,7 @@ class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
 
   RaisedButton backButton() {
     return RaisedButton(
-        onPressed: _provider?.goToBack,
+        onPressed: _viewModel?.goToBack,
         color: Colors.black,
         child: Container(
           child: Text("Back",

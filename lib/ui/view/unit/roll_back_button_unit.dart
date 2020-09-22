@@ -10,11 +10,11 @@ class RollBackButtonUnit extends StatefulWidget {
 }
 
 class _RollBackButtonUnitState extends State<RollBackButtonUnit> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -33,21 +33,21 @@ class _RollBackButtonUnitState extends State<RollBackButtonUnit> {
   }
 
   List<Widget> buttonSelection() {
-    RaisedButton upper = _provider.rollBackButtonEnabled
+    RaisedButton upper = _viewModel.rollBackButtonEnabled
         ? buttonGenerator("Roll", rollDice, Colors.white, Styles.buttonStyle())
         : buttonGenerator(
             "Roll", () {}, Colors.grey[400], Styles.disabledButtonStyle());
 
     RaisedButton bottom;
-    if (_provider.isButtonBack) {
-      bottom = _provider.rollBackButtonEnabled
-          ? buttonGenerator("Back", _provider?.goToActionScenario, Colors.white,
-              Styles.buttonStyle())
+    if (_viewModel.isButtonBack) {
+      bottom = _viewModel.rollBackButtonEnabled
+          ? buttonGenerator("Back", _viewModel?.goToActionScenario,
+              Colors.white, Styles.buttonStyle())
           : buttonGenerator(
               "Back", () {}, Colors.grey[400], Styles.disabledButtonStyle());
     } else {
-      bottom = _provider.rollBackButtonEnabled
-          ? buttonGenerator("Done", _provider?.goToStoryScenario, Colors.white,
+      bottom = _viewModel.rollBackButtonEnabled
+          ? buttonGenerator("Done", _viewModel?.goToStoryScenario, Colors.white,
               Styles.buttonStyle())
           : buttonGenerator(
               "Done", () {}, Colors.grey[400], Styles.disabledButtonStyle());
@@ -56,19 +56,19 @@ class _RollBackButtonUnitState extends State<RollBackButtonUnit> {
   }
 
   void rollDice() {
-    _provider?.rollBackButtonEnabled = false;
-    _provider?.diceString = ".";
-    Future.delayed(Duration(seconds: 1), () => _provider?.diceString = "..");
-    Future.delayed(Duration(seconds: 2), () => _provider?.diceString = "...");
+    _viewModel?.rollBackButtonEnabled = false;
+    _viewModel?.diceString = ".";
+    Future.delayed(Duration(seconds: 1), () => _viewModel?.diceString = "..");
+    Future.delayed(Duration(seconds: 2), () => _viewModel?.diceString = "...");
     Future.delayed(
         Duration(seconds: 3),
         () => {
-              _provider?.rollDice(),
-              _provider?.diceString = _provider.diceString
+              _viewModel?.rollDice(),
+              _viewModel?.diceString = _viewModel.diceString
             });
     Future.delayed(Duration(seconds: 3), () {
-      _provider?.rollBackButtonEnabled = true;
-      _provider.isButtonBack = false;
+      _viewModel?.rollBackButtonEnabled = true;
+      _viewModel.isButtonBack = false;
     });
   }
 }

@@ -8,11 +8,11 @@ class DiceUnit extends StatefulWidget {
 }
 
 class _DiceUnitState extends State<DiceUnit> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Center(
       child: Stack(
@@ -22,7 +22,7 @@ class _DiceUnitState extends State<DiceUnit> {
             child: Image.asset('assets/dice.png'),
           ),
           Text(
-            _provider?.diceString != null ? _provider?.diceString : "",
+            _viewModel?.diceString != null ? _viewModel?.diceString : "",
             style: TextStyle(fontSize: 40),
           )
         ],

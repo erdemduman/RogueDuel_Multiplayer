@@ -14,11 +14,11 @@ class DiceScenario extends StatefulWidget {
 }
 
 class _DiceScenarioState extends State<DiceScenario> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
       child: Column(
         children: [

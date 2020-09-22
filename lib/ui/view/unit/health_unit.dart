@@ -8,11 +8,11 @@ class HealthUnit extends StatefulWidget {
 }
 
 class _HealthUnitState extends State<HealthUnit> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
       child: Column(children: [
         Row(children: [

@@ -9,10 +9,10 @@ class StoryScenario extends StatefulWidget {
 }
 
 class _StoryScenarioState extends State<StoryScenario> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Scaffold(
       body: Container(
         child: Column(
@@ -75,7 +75,7 @@ class _StoryScenarioState extends State<StoryScenario> {
     return Container(
         child: Column(children: [
       RaisedButton(
-          onPressed: _provider.goToGiftPage,
+          onPressed: _viewModel.goToGiftPage,
           color: Colors.black,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(0.0),

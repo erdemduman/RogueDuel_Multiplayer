@@ -12,11 +12,11 @@ class ActionScenario extends StatefulWidget {
 }
 
 class _ActionScenarioState extends State<ActionScenario> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Scaffold(
       body: Container(
           child: Column(
@@ -25,7 +25,7 @@ class _ActionScenarioState extends State<ActionScenario> {
           Expanded(child: HealthUnit(), flex: 1),
           Expanded(child: CalculateUnit(), flex: 3),
           Expanded(
-            child: AttackDefenceUnit(onAction: _provider.goToDiceScenario),
+            child: AttackDefenceUnit(onAction: _viewModel.goToDiceScenario),
             flex: 2,
           ),
         ],

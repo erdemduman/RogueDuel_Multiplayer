@@ -16,15 +16,15 @@ class DuelView extends StatefulWidget {
 }
 
 class _DuelViewState extends State<DuelView> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Column(
           children: [
-            Expanded(child: getScenario(_provider?.scenario), flex: 15),
+            Expanded(child: getScenario(_viewModel?.scenario), flex: 15),
             Expanded(child: downArrow(), flex: 1)
           ],
         ),
@@ -52,8 +52,8 @@ class _DuelViewState extends State<DuelView> {
       width: double.infinity,
       child: RaisedButton(
           onPressed: () {
-            _provider?.pageViewChanged(_provider.pageNumber + 1);
-            widget._pageController.animateToPage(_provider?.pageNumber,
+            _viewModel?.pageViewChanged(_viewModel.pageNumber + 1);
+            widget._pageController.animateToPage(_viewModel?.pageNumber,
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut);
           },
