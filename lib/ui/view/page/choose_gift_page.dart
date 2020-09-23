@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/viewmodel/choose_gift_viewmodel.dart'
     as ChooseGift;
-import 'package:project_rd/styles.dart';
+import 'package:project_rd/ui/utils/styles.dart';
 import 'package:provider/provider.dart';
 
 class ChooseGiftPage extends StatefulWidget {

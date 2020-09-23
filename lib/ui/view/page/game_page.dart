@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/view/duel_view.dart';
-import 'package:project_rd/ui/view/gift_view.dart';
+import 'package:project_rd/ui/view/custom_view/duel_view.dart';
+import 'package:project_rd/ui/view/custom_view/gift_view.dart';
 import 'package:provider/provider.dart';
 import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 

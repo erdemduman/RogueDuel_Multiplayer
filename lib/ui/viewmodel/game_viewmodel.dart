@@ -1,13 +1,9 @@
 import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
 import 'package:project_rd/logic/use_case/calculate_use_case.dart' as Calculate;
-import 'package:project_rd/data/player.dart';
 import 'base_viewmodel.dart' as Base;
 
 class ViewModel extends Base.ViewModel implements Calculate.Callback {
-  Player _me;
-  Player _opponent;
-
   GameMode _gameMode;
   Scenario _scenario;
   String _currentCalculateString;
@@ -15,15 +11,8 @@ class ViewModel extends Base.ViewModel implements Calculate.Callback {
   String _diceString;
   bool _rollBackButtonEnabled;
   bool _isButtonBack;
-  Calculate.UseCase _calculateUseCase;
-  Map<ActionType, DiceType> _diceTypeMapper = {
-    ActionType.Attack: DiceType.Attack,
-    ActionType.Defence: DiceType.Defence
-  };
 
-  ViewModel() {
-    _calculateUseCase = Calculate.UseCase();
-  }
+  ViewModel() {}
 
   @override
   void onCreate([Base.Parameter navigationData]) {
@@ -34,12 +23,6 @@ class ViewModel extends Base.ViewModel implements Calculate.Callback {
     _pageNumber = 0;
     _rollBackButtonEnabled = true;
     _isButtonBack = true;
-    createPlayers();
-  }
-
-  void createPlayers() {
-    _me = Player(name: "Rogue", hp: 100);
-    _opponent = Player(name: "Monster", hp: 100);
   }
 
   void pageViewChanged(int page) {
@@ -47,17 +30,7 @@ class ViewModel extends Base.ViewModel implements Calculate.Callback {
     notifyListeners();
   }
 
-  void changeCalculateValue(int number) async {
-    _currentCalculateString = number.toString();
-    await _calculateUseCase.executeAsync(
-        Calculate.Parameter()
-          ..me = _me
-          ..opponent = _opponent
-          ..diceString = _currentCalculateString
-          ..isCalculate = true,
-        this);
-    notifyListeners();
-  }
+  void changeCalculateValue(int number) async {}
 
   void goToStoryScenario() {
     _scenario = Scenario.Story;
@@ -90,8 +63,6 @@ class ViewModel extends Base.ViewModel implements Calculate.Callback {
   @override
   void onDone() {}
 
-  Player get me => _me;
-  Player get opponent => _opponent;
   Scenario get scenario => _scenario;
   int get currentCalculateValue => int.parse(_currentCalculateString);
   int get pageNumber => _pageNumber;

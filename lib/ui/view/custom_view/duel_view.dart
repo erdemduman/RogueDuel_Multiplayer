@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/view/scenario/action_scenario.dart';
-import 'package:project_rd/ui/view/scenario/dice_scenario.dart';
-import 'package:project_rd/ui/view/scenario/story_scenario.dart';
+import 'package:project_rd/ui/view/custom_view/scenario/action_scenario.dart';
+import 'package:project_rd/ui/view/custom_view/scenario/dice_scenario.dart';
+import 'package:project_rd/ui/view/custom_view/scenario/story_scenario.dart';
 import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 import 'package:provider/provider.dart';
 

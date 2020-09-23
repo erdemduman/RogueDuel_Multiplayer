@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:project_rd/service/locator.dart';
-import 'package:project_rd/service/router_service.dart';
+import 'package:project_rd/ui/route/locator.dart';
+import 'package:project_rd/ui/route/router_service.dart';
 
 abstract class ViewModel extends ChangeNotifier {
   final RouteService routeService = locator<RouteService>();
