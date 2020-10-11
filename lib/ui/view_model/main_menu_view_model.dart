@@ -1,9 +1,9 @@
 import 'package:project_rd/constants/routes.dart';
 import 'package:project_rd/logic/logic_model/menu_item.dart';
-import 'package:project_rd/logic/provider/game_provider.dart' as Game;
-import 'base_provider.dart' as Base;
+import 'package:project_rd/ui/view_model/game_view_model.dart' as Game;
+import 'base_view_model.dart' as Base;
 
-class Provider extends Base.Provider {
+class ViewModel extends Base.ViewModel {
   bool _isMenuActive;
   List<MenuItem> _menuItems = [];
   List<MenuItem> _mainMenuItems = [];

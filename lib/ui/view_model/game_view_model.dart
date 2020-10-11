@@ -2,9 +2,9 @@ import 'dart:math';
 import 'package:project_rd/constants/routes.dart';
 import 'package:project_rd/logic/use_case/calculate_use_case.dart' as Calculate;
 import 'package:project_rd/model/player.dart';
-import 'base_provider.dart' as Base;
+import 'base_view_model.dart' as Base;
 
-class Provider extends Base.Provider implements Calculate.Callback {
+class ViewModel extends Base.ViewModel implements Calculate.Callback {
   Player _me;
   Player _opponent;
 

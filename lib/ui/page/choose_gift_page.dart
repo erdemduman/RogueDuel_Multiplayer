@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/logic/provider/choose_gift_provider.dart'
+import 'package:project_rd/ui/view_model/choose_gift_view_model.dart'
     as ChooseGift;
 import 'package:project_rd/styles.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +14,7 @@ class _ChooseGiftPageState extends State<ChooseGiftPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => ChooseGift.Provider(),
+        create: (context) => ChooseGift.ViewModel(),
         child: ChooseGiftPageBody());
   }
 }
@@ -25,18 +25,18 @@ class ChooseGiftPageBody extends StatefulWidget {
 }
 
 class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
-  ChooseGift.Provider _provider;
+  ChooseGift.ViewModel _provider;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<ChooseGift.Provider>(context, listen: false);
+    _provider = Provider.of<ChooseGift.ViewModel>(context, listen: false);
     _provider?.onCreate();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<ChooseGift.Provider>(context);
+    _provider = Provider.of<ChooseGift.ViewModel>(context);
     return Scaffold(
       body: Center(
         child: Container(

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/main_menu_card.dart';
 import 'package:provider/provider.dart';
-import 'package:project_rd/logic/provider/main_menu_provider.dart' as MainMenu;
+import 'package:project_rd/ui/view_model/main_menu_view_model.dart' as MainMenu;
 
 class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => MainMenu.Provider(), child: MainMenuPageBody());
+        create: (context) => MainMenu.ViewModel(), child: MainMenuPageBody());
   }
 }
 
@@ -19,18 +19,18 @@ class MainMenuPageBody extends StatefulWidget {
 }
 
 class _MainMenuPageBodyState extends State<MainMenuPageBody> {
-  MainMenu.Provider _provider;
+  MainMenu.ViewModel _provider;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<MainMenu.Provider>(context, listen: false);
+    _provider = Provider.of<MainMenu.ViewModel>(context, listen: false);
     _provider.onCreate();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<MainMenu.Provider>(context);
+    _provider = Provider.of<MainMenu.ViewModel>(context);
     return Scaffold(
       body: Container(
         child: Center(
