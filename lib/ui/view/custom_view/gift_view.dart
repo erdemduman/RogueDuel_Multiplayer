@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:project_rd/ui/view_model/game_view_model.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 
 class GiftView extends StatefulWidget {
   final PageController _pageController;
@@ -13,11 +13,11 @@ class GiftView extends StatefulWidget {
 }
 
 class _GiftViewState extends State<GiftView> {
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
         child: Column(
           children: [
@@ -35,8 +35,8 @@ class _GiftViewState extends State<GiftView> {
       width: double.infinity,
       child: RaisedButton(
           onPressed: () {
-            _provider?.pageViewChanged(_provider.pageNumber + 1);
-            widget._pageController.animateToPage(_provider?.pageNumber,
+            _viewModel?.pageViewChanged(_viewModel.pageNumber + 1);
+            widget._pageController.animateToPage(_viewModel?.pageNumber,
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut);
           },

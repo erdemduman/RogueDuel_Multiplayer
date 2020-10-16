@@ -1,7 +1,6 @@
 import 'dart:math';
-
-import 'package:project_rd/model/gift.dart';
-import 'package:project_rd/model/player.dart';
+import 'package:project_rd/data/gift.dart';
+import 'package:project_rd/data/player.dart';
 
 import 'base_use_case.dart' as Base;
 

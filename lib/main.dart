@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_rd/router.dart';
-import 'package:project_rd/service/locator.dart';
-import 'package:project_rd/service/router_service.dart';
+import 'package:project_rd/ui/route/router.dart';
+import 'package:project_rd/ui/route/locator.dart';
+import 'package:project_rd/ui/route/router_service.dart';
 import 'constants/routes.dart';
 
 void main() {

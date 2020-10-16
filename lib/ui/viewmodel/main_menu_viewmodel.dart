@@ -1,7 +1,7 @@
 import 'package:project_rd/constants/routes.dart';
 import 'package:project_rd/logic/logic_model/menu_item.dart';
-import 'package:project_rd/ui/view_model/game_view_model.dart' as Game;
-import 'base_view_model.dart' as Base;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
+import 'base_viewmodel.dart' as Base;
 
 class ViewModel extends Base.ViewModel {
   bool _isMenuActive;
@@ -9,7 +9,7 @@ class ViewModel extends Base.ViewModel {
   List<MenuItem> _mainMenuItems = [];
   List<MenuItem> _multiplayerMenuItems = [];
 
-  Provider() {
+  ViewModel() {
     isMenuActive = false;
   }
 

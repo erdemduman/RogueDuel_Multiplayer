@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:project_rd/ui/view/main_menu_card.dart';
 import 'package:provider/provider.dart';
-import 'package:project_rd/ui/view_model/main_menu_view_model.dart' as MainMenu;
+import 'package:project_rd/ui/viewmodel/main_menu_viewmodel.dart' as MainMenu;
 
 class MainMenuPage extends StatelessWidget {
   @override
@@ -19,18 +19,18 @@ class MainMenuPageBody extends StatefulWidget {
 }
 
 class _MainMenuPageBodyState extends State<MainMenuPageBody> {
-  MainMenu.ViewModel _provider;
+  MainMenu.ViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<MainMenu.ViewModel>(context, listen: false);
-    _provider.onCreate();
+    _viewModel = Provider.of<MainMenu.ViewModel>(context, listen: false);
+    _viewModel.onCreate();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<MainMenu.ViewModel>(context);
+    _viewModel = Provider.of<MainMenu.ViewModel>(context);
     return Scaffold(
       body: Container(
         child: Center(
@@ -50,7 +50,7 @@ class _MainMenuPageBodyState extends State<MainMenuPageBody> {
       isRepeatingAnimation: false,
       speed: Duration(milliseconds: 80),
       text: ["Rogue's Duel."],
-      onFinished: () => _provider.isMenuActive = true,
+      onFinished: () => _viewModel.isMenuActive = true,
       textStyle: TextStyle(fontFamily: 'Minecraft', fontSize: 50),
     );
   }
@@ -60,11 +60,11 @@ class _MainMenuPageBodyState extends State<MainMenuPageBody> {
       child: Visibility(
         child: ListView.builder(
             itemBuilder: (context, index) =>
-                MainMenuCard(List.from(_provider.menuItems)[index]),
-            itemCount: _provider.menuItems.length,
+                MainMenuCard(List.from(_viewModel.menuItems)[index]),
+            itemCount: _viewModel.menuItems.length,
             shrinkWrap: true,
             physics: new NeverScrollableScrollPhysics()),
-        visible: _provider.isMenuActive,
+        visible: _viewModel.isMenuActive,
       ),
     );
   }

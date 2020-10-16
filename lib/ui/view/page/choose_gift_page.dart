@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_rd/ui/view_model/choose_gift_view_model.dart'
+import 'package:project_rd/ui/viewmodel/choose_gift_viewmodel.dart'
     as ChooseGift;
-import 'package:project_rd/styles.dart';
+import 'package:project_rd/ui/utils/styles.dart';
 import 'package:provider/provider.dart';
 
 class ChooseGiftPage extends StatefulWidget {
@@ -25,18 +25,18 @@ class ChooseGiftPageBody extends StatefulWidget {
 }
 
 class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
-  ChooseGift.ViewModel _provider;
+  ChooseGift.ViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _provider = Provider.of<ChooseGift.ViewModel>(context, listen: false);
-    _provider?.onCreate();
+    _viewModel = Provider.of<ChooseGift.ViewModel>(context, listen: false);
+    _viewModel?.onCreate();
   }
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<ChooseGift.ViewModel>(context);
+    _viewModel = Provider.of<ChooseGift.ViewModel>(context);
     return Scaffold(
       body: Center(
         child: Container(
@@ -70,7 +70,7 @@ class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
     return Container(
       width: double.infinity,
       child: RaisedButton(
-          onPressed: () => _provider?.goToActionScenario(),
+          onPressed: () => _viewModel?.goToActionScenario(),
           color: Colors.black,
           shape: Styles.buttonStyle(),
           child: Container(
@@ -82,7 +82,7 @@ class _ChooseGiftPageBodyState extends State<ChooseGiftPageBody> {
 
   RaisedButton backButton() {
     return RaisedButton(
-        onPressed: _provider?.goToBack,
+        onPressed: _viewModel?.goToBack,
         color: Colors.black,
         child: Container(
           child: Text("Back",

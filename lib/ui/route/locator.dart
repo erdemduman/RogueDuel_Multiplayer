@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:project_rd/service/router_service.dart';
+import 'package:project_rd/ui/route/router_service.dart';
 
 GetIt locator = GetIt.instance;
 

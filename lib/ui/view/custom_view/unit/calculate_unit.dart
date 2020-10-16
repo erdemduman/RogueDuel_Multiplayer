@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:numberpicker/numberpicker.dart';
-import 'package:project_rd/ui/view_model/game_view_model.dart' as Game;
+import 'package:project_rd/ui/viewmodel/game_viewmodel.dart' as Game;
 import 'package:provider/provider.dart';
 
 class CalculateUnit extends StatefulWidget {
@@ -10,11 +10,11 @@ class CalculateUnit extends StatefulWidget {
 
 class _CalculateUnitState extends State<CalculateUnit> {
   static const double _pi = 3.14;
-  Game.ViewModel _provider;
+  Game.ViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
-    _provider = Provider.of<Game.ViewModel>(context);
+    _viewModel = Provider.of<Game.ViewModel>(context);
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,10 +32,10 @@ class _CalculateUnitState extends State<CalculateUnit> {
           Expanded(
             child: Container(
               child: NumberPicker.horizontal(
-                initialValue: _provider.currentCalculateValue,
+                initialValue: _viewModel.currentCalculateValue,
                 minValue: 0,
                 maxValue: 20,
-                onChanged: (number) => _provider.changeCalculateValue(number),
+                onChanged: (number) => _viewModel.changeCalculateValue(number),
               ),
             ),
             flex: 1,
